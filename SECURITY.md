@@ -24,7 +24,7 @@ Users are encouraged to keep their installations up-to-date to benefit from the 
 
 ## Reporting a bug in a third-party libraries
 
-For security vulnerabilities found in third-party libraries, please also contact the library's owner or maintainer directly.
+For security vulnerabilities found in third-party dependencies that we use in our product, please also contact the dependency's owner or maintainer directly as per their security policy.
 
 <!--- Additional option to add
 
