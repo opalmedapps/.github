@@ -11,11 +11,12 @@ If you discover a security vulnerability, we encourage you to report it as soon 
 
 2. Report the vulnerability to Dr. John Kildea at john.kildea@mcgill.ca. Please include as much information as possible to help us understand the nature and scope of the issue:
 
-    - A detailed description of the vulnerability.
-    - Steps to reproduce the vulnerability.
-    - Any relevant screenshots or code snippets.
-    - Potential impact of the vulnerability.
-    - Any other relevant information.
+    - A detailed description of the vulnerability
+    - Affected component and version
+    - Steps to reproduce the vulnerability
+    - Any relevant screenshots or code snippets
+    - Potential impact of the vulnerability
+    - Any other relevant information
 
 ## Security Updates
 
