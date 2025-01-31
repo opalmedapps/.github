@@ -2,6 +2,9 @@
 
 ## Reporting a Vulnerability
 
+> ![WARNING]
+> Please do **NOT** report security vulnerabilities through public GitHub issues.
+
 If you discover a security vulnerability, we encourage you to report it as soon as possible. Please follow the steps below to report a vulnerability:
 
 1. Do not open an issue on GitHub: Security issues should not be publicly disclosed until they have been addressed. Avoid discussing potential vulnerabilities in public forums such as GitHub issues, forums, or social media.
