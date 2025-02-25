@@ -18,10 +18,6 @@ If you discover a security vulnerability, we encourage you to report it as soon 
     - Potential impact of the vulnerability
     - Any other relevant information
 
-## Security Updates
-
-Users are encouraged to keep their installations up-to-date to benefit from the latest security fixes.
-
 ## Reporting a bug in a third-party libraries
 
 For security vulnerabilities found in third-party dependencies that we use in our product, please also contact the dependency's owner or maintainer directly as per their security policy.
