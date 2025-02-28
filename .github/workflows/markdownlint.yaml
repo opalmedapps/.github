@@ -21,6 +21,9 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          which node
+          node --version
       - uses: actions/checkout@v4.2.2
       - name: Run markdownlint
         uses: YannickTeKulve/docker-run-action@0.0.6
