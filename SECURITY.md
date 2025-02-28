@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-> ![WARNING]
+> [!WARNING]
 > Please do **NOT** report security vulnerabilities through public GitHub issues.
 
 If you discover a security vulnerability, we encourage you to report it as soon as possible. Please follow the steps below to report a vulnerability:
@@ -18,6 +18,6 @@ If you discover a security vulnerability, we encourage you to report it as soon 
     - Potential impact of the vulnerability
     - Any other relevant information
 
-## Reporting a bug in a third-party libraries
+## Reporting a bug in a third-party library
 
 For security vulnerabilities found in third-party dependencies that we use in our product, please also contact the dependency's owner or maintainer directly as per their security policy.
