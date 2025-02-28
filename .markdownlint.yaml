@@ -1,0 +1,6 @@
+# https://github.com/DavidAnson/markdownlint?tab=readme-ov-file#rules--aliases
+
+line-length: false
+
+ul-indent:
+  indent: 4
