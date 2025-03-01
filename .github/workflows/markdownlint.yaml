@@ -10,6 +10,10 @@ on:
       - main
   pull_request:
   workflow_call:
+    inputs:
+      semantic-linebreak:
+        type: boolean
+        required: true
 
 concurrency:
   group: "${{ github.ref }}-markdownlint"
@@ -25,16 +29,22 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - run: npm install markdownlint-rule-max-one-sentence-per-line
+      - name: Choose markdownlint config file
+        run: |
+            if [[ ${{ inputs.semantic-linebreak }} ]]; then
+              echo "CONFIG_FILE=semantic-linebreak.yaml" >> $GITHUB_ENV
+            else
+              echo "CONFIG_FILE=default-config.yaml" >> $GITHUB_ENV
+            fi
       - uses: actions/checkout@v4.2.2
-      - name: Run markdownlint
+      - name: Run markdownlint with enforcing semantic linebreak
         uses: YannickTeKulve/docker-run-action@0.0.6
         with:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
           # node user does not have permissions to workspace due to user id mismatch
           options: -v ${{ github.workspace }}:/workdir --user root
           # use the config file that is stored outside the root for CI specific configuration
-          run: markdownlint-cli2 --config .github/markdownlint/.markdownlint-cli2.yaml "**/*.md"
+          run: markdownlint-cli2 --config .github/markdownlint/$CONFIG_FILE "**/*.md"
         continue-on-error: true
       # Needs to be a public repo in order for uploading SARIF files to work
       # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
