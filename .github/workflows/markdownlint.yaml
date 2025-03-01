@@ -44,12 +44,10 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - name: Run markdownlint with enforcing semantic linebreak
         uses: YannickTeKulve/docker-run-action@0.0.6
-        env:
-          CONFIG_FILE: $CONFIG_FILE
         with:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
           # node user does not have permissions to workspace due to user id mismatch
-          options: -v ${{ github.workspace }}:/workdir --user root
+          options: -v ${{ github.workspace }}:/workdir --user root --env CONFIG_FILE=$CONFIG_FILE
           # use the config file that is stored outside the root for CI specific configuration
           run: |
             export
