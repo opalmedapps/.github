@@ -53,6 +53,7 @@ jobs:
           # use the config file that is stored outside the root for CI specific configuration
           run: |
             export
+            echo ${{ inputs.semantic-linebreak }}
             markdownlint-cli2 --config .github/markdownlint/$CONFIG_FILE "**/*.md"
         continue-on-error: true
       # Needs to be a public repo in order for uploading SARIF files to work
