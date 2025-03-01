@@ -30,14 +30,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Choose markdownlint config file
+        shell: bash
         run: |
             SEMANTIC_LINEBREAK=${{ inputs.semantic-linebreak }}
+            echo $SEMANTIC_LINEBREAK
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
               echo "CONFIG_FILE=semantic-linebreak.yaml" >> $GITHUB_ENV
             else
               echo "CONFIG_FILE=default-config.yaml" >> $GITHUB_ENV
             fi
-            echo $GITHUB_ENV
+      - run: echo $CONFIG_FILE
       - uses: actions/checkout@v4.2.2
       - name: Run markdownlint with enforcing semantic linebreak
         uses: YannickTeKulve/docker-run-action@0.0.6
