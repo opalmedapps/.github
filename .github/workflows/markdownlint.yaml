@@ -37,6 +37,7 @@ jobs:
             else
               echo "CONFIG_FILE=default-config.yaml" >> $GITHUB_ENV
             fi
+            echo $GITHUB_ENV
       - uses: actions/checkout@v4.2.2
       - name: Run markdownlint with enforcing semantic linebreak
         uses: YannickTeKulve/docker-run-action@0.0.6
