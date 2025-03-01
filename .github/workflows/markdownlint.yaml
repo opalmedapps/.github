@@ -51,7 +51,9 @@ jobs:
           # node user does not have permissions to workspace due to user id mismatch
           options: -v ${{ github.workspace }}:/workdir --user root
           # use the config file that is stored outside the root for CI specific configuration
-          run: markdownlint-cli2 --config .github/markdownlint/$CONFIG_FILE "**/*.md"
+          run: |
+            export
+            markdownlint-cli2 --config .github/markdownlint/$CONFIG_FILE "**/*.md"
         continue-on-error: true
       # Needs to be a public repo in order for uploading SARIF files to work
       # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
