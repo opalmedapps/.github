@@ -13,7 +13,6 @@ on:
     inputs:
       semantic-linebreak:
         type: boolean
-        required: true
         default: false
 
 concurrency:
