@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Choose markdownlint config file
         run: |
-            if [[ ${{ inputs.semantic-linebreak }} ]]; then
+            if [[ ${${{ inputs.semantic-linebreak }}:-false} ]]; then
               echo "CONFIG_FILE=semantic-linebreak.yaml" >> $GITHUB_ENV
             else
               echo "CONFIG_FILE=default-config.yaml" >> $GITHUB_ENV
