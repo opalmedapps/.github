@@ -14,6 +14,7 @@ on:
       semantic-linebreak:
         type: boolean
         required: true
+        default: false
 
 concurrency:
   group: "${{ github.ref }}-markdownlint"
