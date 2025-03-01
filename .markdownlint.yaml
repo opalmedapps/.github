@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
+#
+# SPDX-License-Identifier: MIT
+
+# https://github.com/DavidAnson/markdownlint?tab=readme-ov-file#rules--aliases
+
+line-length: false
+
+ul-indent:
+  indent: 4
+
+# Allow bare URLs since we use magiclink to convert bare URLs automatically to links
+no-bare-urls: false
+
+max-one-sentence-per-line:
+  # ignore admonition syntax
+  # see: https://github.com/aepfli/markdownlint-rule-max-one-sentence-per-line/pull/52/files#r1579994724
+  ignored_words:
+    - "ie"
+    - "i.e"
+    - "eg"
+    - "e.g"
+    - "etc"
+    - "ex"
+    - "!!"
+    - "??"
+    - "vs"
+    - "dr"

@@ -9,8 +9,14 @@ name: REUSE Compliance Check
 
 on:
   push:
+    branches:
+      - $default-branch
   pull_request:
   workflow_call:
+
+concurrency:
+  group: "${{ github.ref }}-reuse"
+  cancel-in-progress: true
 
 permissions:
   contents: read
