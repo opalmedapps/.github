@@ -50,7 +50,7 @@ jobs:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
           mount_ws: true
           # node user does not have permissions to workspace due to user id mismatch
-          options: --user root --env CONFIG_FILE=${{ steps.get-config-file.outputs.config-file }}
+          options: --env CONFIG_FILE=${{ steps.get-config-file.outputs.config-file }}
           # use the config file that is stored outside the root for CI specific configuration
           run: |
             export
