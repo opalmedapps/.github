@@ -1,0 +1,38 @@
+// SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
+//
+// SPDX-License-Identifier: MIT
+
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    // https://docs.renovatebot.com/presets-default/#separatemultiplemajorreleases
+    ":separateMultipleMajorReleases",
+    // https://docs.renovatebot.com/presets-default/#separatepatchreleases
+    ":separatePatchReleases",
+    // set timezone to local one to ensure schedules are run
+    // https://docs.renovatebot.com/configuration-options/#timezone
+    ":timezone(America/Toronto)",
+    // enable updates for pre-commit
+    // see: https://docs.renovatebot.com/modules/manager/pre-commit/
+    // https://docs.renovatebot.com/presets-default/#enableprecommit
+    ":enablePreCommit",
+  ],
+  // https://docs.renovatebot.com/configuration-options/#assignees
+  "assignees": ["mschoettle"],
+  // https://docs.renovatebot.com/configuration-options/#labels
+  "labels": ["dependencies"],
+  // Only rebase existing MRs when the branch is conflicted
+  // This avoids getting spammed by updates to existing PRs
+  //
+  // https://docs.renovatebot.com/configuration-options/#rebasewhen
+  "rebaseWhen": "conflicted",
+  // https://docs.renovatebot.com/configuration-options/#packagerules
+  "packageRules": [
+    // Combine markdownlint-cli2 updates
+    {
+      "matchPackageNames": ["/markdownlint-cli2/"],
+      "groupName": "markdownlint-cli2",
+    },
+  ],
+}
