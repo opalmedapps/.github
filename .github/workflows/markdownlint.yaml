@@ -10,6 +10,10 @@ on:
       - main
   pull_request:
   workflow_call:
+    inputs:
+      semantic-linebreak:
+        type: boolean
+        default: false
 
 concurrency:
   group: "${{ github.ref }}-markdownlint"
@@ -25,17 +29,29 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - run: npm install markdownlint-rule-max-one-sentence-per-line
+      - name: Choose markdownlint config file
+        id: get-config-file
+        shell: bash
+        run: |
+            SEMANTIC_LINEBREAK=${{ inputs.semantic-linebreak }}
+            echo $SEMANTIC_LINEBREAK
+            if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
+              echo "config-file=semantic-linebreak.markdownlint-cli2.yaml" >> $GITHUB_OUTPUT
+            else
+              echo "config-file=default.markdownlint-cli2.yaml" >> $GITHUB_OUTPUT
+            fi
+      - name: Print chosen config file
+        run: echo ${{ steps.get-config-file.outputs.config-file }}
       - uses: actions/checkout@v4.2.2
-      - name: Run markdownlint
+      - name: Run markdownlint with rules as container
         uses: YannickTeKulve/docker-run-action@0.0.6
+        continue-on-error: true
         with:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
           # node user does not have permissions to workspace due to user id mismatch
-          options: -v ${{ github.workspace }}:/workdir --user root
+          options: --volume ${{ github.workspace }}:/workdir --user root --env CONFIG_FILE=${{ steps.get-config-file.outputs.config-file }}
           # use the config file that is stored outside the root for CI specific configuration
-          run: markdownlint-cli2 --config .github/markdownlint/.markdownlint-cli2.yaml "**/*.md"
-        continue-on-error: true
+          run: markdownlint-cli2 --config .github/markdownlint/$CONFIG_FILE "**/*.md"
       # Needs to be a public repo in order for uploading SARIF files to work
       # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
       - uses: github/codeql-action/upload-sarif@v3
