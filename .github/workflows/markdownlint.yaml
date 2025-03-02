@@ -49,7 +49,8 @@ jobs:
           volumes: ${{ github.workspace }}:/workdir
           environment: CONFIG_FILE
           options: |
-            --entrypoint ""
+            # overwrite default entrypoint (which is a call to markdownlint-cli2)
+            --entrypoint [""]
           # node user does not have permissions to workspace due to user id mismatch
           # options: -v ${{ github.workspace }}:/workdir --user root --env CONFIG_FILE=${{ env.CONFIG_FILE }}
           # use the config file that is stored outside the root for CI specific configuration
