@@ -36,9 +36,9 @@ jobs:
             SEMANTIC_LINEBREAK=${{ inputs.semantic-linebreak }}
             echo $SEMANTIC_LINEBREAK
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
-              echo "config-file=semantic-linebreak.yaml" >> $GITHUB_OUTPUT
+              echo "config-file=semantic-linebreak.markdownlint-cli2.yaml" >> $GITHUB_OUTPUT
             else
-              echo "config-file=default-config.yaml" >> $GITHUB_OUTPUT
+              echo "config-file=default.markdownlint-cli2.yaml" >> $GITHUB_OUTPUT
             fi
       - name: Print chosen config file
         run: echo ${{ steps.get-config-file.outputs.config-file }}
