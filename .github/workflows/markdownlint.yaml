@@ -42,12 +42,15 @@ jobs:
       - name: Print chosen config file
         run: echo $CONFIG_FILE
       - uses: actions/checkout@v4.2.2
-      - name: Run markdownlint with enforcing semantic linebreak
-        uses: YannickTeKulve/docker-run-action@0.0.6
+      - name: Run markdownlint
+        uses: kohlerdominik/docker-run-action@v2.0.0
         with:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
+          volumes: ${{ github.workspace }}:/workspace
+          environment: |
+            CONFIG_FILE
           # node user does not have permissions to workspace due to user id mismatch
-          options: -v ${{ github.workspace }}:/workdir --user root --env CONFIG_FILE=${{ github.env.CONFIG_FILE }}
+          # options: -v ${{ github.workspace }}:/workdir --user root --env CONFIG_FILE=${{ env.CONFIG_FILE }}
           # use the config file that is stored outside the root for CI specific configuration
           run: |
             export
