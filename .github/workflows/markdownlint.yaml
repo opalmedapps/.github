@@ -40,7 +40,7 @@ jobs:
               echo "customRules:" >> $CONFIG_FILE
               echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
             fi
-      - name: Print chosen config file
+      - name: Print config file
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
       - name: Run markdownlint with rules as container
         uses: YannickTeKulve/docker-run-action@0.0.6
