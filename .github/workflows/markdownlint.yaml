@@ -13,6 +13,9 @@ on:
       semantic-linebreak:
         type: boolean
         default: false
+      code-scanning:
+        type: boolean
+        default: false
 
 concurrency:
   group: "${{ github.ref }}-markdownlint-${{ inputs.semantic-linebreak }}"
@@ -61,6 +64,7 @@ jobs:
       # Needs to be a public repo in order for uploading SARIF files to work
       # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
       - uses: github/codeql-action/upload-sarif@v3
+        if: ${{ inputs.code-scanning }}
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: markdownlint-cli2-sarif.sarif

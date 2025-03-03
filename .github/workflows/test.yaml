@@ -27,5 +27,6 @@ jobs:
     uses: ./.github/workflows/markdownlint.yaml
     with:
       semantic-linebreak: true
+      code-scanning: true
   reuse-compliance-check:
     uses: ./.github/workflows/reuse.yaml
