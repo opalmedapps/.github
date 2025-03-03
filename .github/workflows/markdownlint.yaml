@@ -5,10 +5,6 @@
 name: Markdownlint
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
   workflow_call:
     inputs:
       semantic-linebreak:
@@ -29,7 +25,9 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - name: Choose markdownlint config file
+      - uses: actions/checkout@v4.2.2
+      # Create config file since extra files are not possible in reusable workflows
+      - name: Create markdownlint config file
         id: get-config-file
         shell: bash
         run: |
@@ -42,7 +40,6 @@ jobs:
             fi
       - name: Print chosen config file
         run: echo ${{ steps.get-config-file.outputs.config-file }}
-      - uses: actions/checkout@v4.2.2
       - name: Run markdownlint with rules as container
         uses: YannickTeKulve/docker-run-action@0.0.6
         continue-on-error: true

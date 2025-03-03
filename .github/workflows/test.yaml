@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
+#
+# SPDX-License-Identifier: MIT
+---
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: "${{ github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  # required for upload-sarif action
+  # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#example-workflow-for-sarif-files-generated-outside-of-a-repository
+  security-events: write
+
+jobs:
+  markdownlint-default:
+    uses: ./markdownlint.yaml
+  markdownlint-semantic-linebreak:
+    uses: ./markdownlint.yaml
+    with:
+      semantic-linebreak: true
+  reuse-compliance-check:
+    uses: ./reuse.yaml
