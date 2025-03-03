@@ -22,10 +22,10 @@ permissions:
 
 jobs:
   markdownlint-default:
-    uses: ./markdownlint.yaml@$GITHUB_REF
+    uses: ./github/workflows/markdownlint.yaml@$GITHUB_REF
   markdownlint-semantic-linebreak:
-    uses: ./markdownlint.yaml@$GITHUB_REF
+    uses: ./github/workflows/markdownlint.yaml@$GITHUB_REF
     with:
       semantic-linebreak: true
   reuse-compliance-check:
-    uses: ./reuse.yaml@$GITHUB_REF
+    uses: ./github/workflows/reuse.yaml@$GITHUB_REF
