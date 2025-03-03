@@ -12,7 +12,7 @@ on:
         default: false
 
 concurrency:
-  group: "${{ github.ref }}-markdownlint"
+  group: "${{ github.ref }}-markdownlint-${{ inputs.semantic-linebreak }}"
   cancel-in-progress: true
 
 permissions:
