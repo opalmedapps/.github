@@ -7,6 +7,9 @@ name: Markdownlint
 on:
   workflow_call:
     inputs:
+      # Enforce one sentence per line
+      # semantic line breaks (https://sembr.org/)
+      # See: https://github.com/DavidAnson/markdownlint/pull/719
       semantic-linebreak:
         type: boolean
         default: false
@@ -27,11 +30,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       # Create config file since extra files are not possible in reusable workflows
+      # https://github.com/DavidAnson/markdownlint-cli2#markdownlint-cli2yaml
+      # use custom rule for semantic linebreaks contained in supplementary rules image as a workaround
+      # more details: https://github.com/DavidAnson/vscode-markdownlint/issues/336
       - name: Create markdownlint config file
         shell: bash
         run: |
             SEMANTIC_LINEBREAK=${{ inputs.semantic-linebreak }}
             CONFIG_FILE=.github/markdownlint/.markdownlint-cli2.yaml
+            mkdir -p .github/markdownlint/
             echo "outputFormatters:" > $CONFIG_FILE
             echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
             echo "  - - markdownlint-cli2-formatter-sarif" >> $CONFIG_FILE
