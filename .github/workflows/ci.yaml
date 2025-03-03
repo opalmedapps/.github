@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
+#
+# SPDX-License-Identifier: MIT
 name: ci
 
 on:
@@ -20,7 +23,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4.2.2
-      
+
       - uses: pre-commit/action@v3.0.1
         env:
           # run in test when testing the markdownlint workflow
