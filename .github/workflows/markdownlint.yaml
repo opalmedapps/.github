@@ -32,14 +32,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
       # Create config file since extra files are not possible in reusable workflows
       # https://github.com/DavidAnson/markdownlint-cli2#markdownlint-cli2yaml
       # use custom rule for semantic linebreaks contained in supplementary rules image as a workaround
       # more details: https://github.com/DavidAnson/vscode-markdownlint/issues/336
       - name: Create markdownlint config file
         shell: bash
+        env:
+          SEMANTIC_LINEBREAK: ${{ inputs.semantic-linebreak }}
         run: |
-            SEMANTIC_LINEBREAK=${{ inputs.semantic-linebreak }}
             CONFIG_FILE=.github/markdownlint/.markdownlint-cli2.yaml
             mkdir -p .github/markdownlint/
             echo "outputFormatters:" > $CONFIG_FILE
@@ -74,4 +77,4 @@ jobs:
       # fail if there are markdownlint violations
       - name: Check markdownlint results
         run: |
-          cat markdownlint-cli2-sarif.sarif | grep -q '"results": \[\]'
+          grep -q '"results": \[\]' markdownlint-cli2-sarif.sarif
