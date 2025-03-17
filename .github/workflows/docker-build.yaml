@@ -66,8 +66,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
       - name: Test image
         env:
           TEST_COMMAND: ${{ inputs.test-command }}
