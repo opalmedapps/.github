@@ -36,4 +36,7 @@ jobs:
   reuse-compliance-check:
     uses: ./.github/workflows/reuse.yaml
   docker-build:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/docker-build.yaml
