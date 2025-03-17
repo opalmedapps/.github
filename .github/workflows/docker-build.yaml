@@ -54,6 +54,14 @@ jobs:
         uses: docker/metadata-action@v5.7.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      # special case for .github to strip the leading period away since it is an invalid tag name
+      - name: Sanitize tag name
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          echo "$TAGS"
+          echo TAG_NAME="$TAGS" | sed 's/\/\./\//g' >> "$GITHUB_ENV"
+          echo "$GITHUB_ENV" | grep TAG_NAME
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
@@ -63,7 +71,7 @@ jobs:
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.TAG_NAME }}
           labels: ${{ steps.meta.outputs.labels }}
           # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
           # cache-from: type=gha
@@ -72,7 +80,7 @@ jobs:
         env:
           TEST_COMMAND: ${{ inputs.test-command }}
         run: |
-          docker run --rm "$DOCKER_METADATA_OUTPUT_TAGS" "$TEST_COMMAND"
+          docker run --rm "$TAG_NAME" "$TEST_COMMAND"
       # - name: Generate artifact attestation
       #   uses: actions/attest-build-provenance@v2.2.3
       #   with:
