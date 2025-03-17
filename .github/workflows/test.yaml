@@ -19,6 +19,9 @@ permissions:
 
 jobs:
   markdownlint-default:
+    permissions:
+      contents: read
+      security-events: write
     uses: ./.github/workflows/markdownlint.yaml
   markdownlint-semantic-linebreak:
     permissions:
