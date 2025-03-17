@@ -32,3 +32,5 @@ jobs:
       code-scanning: true
   reuse-compliance-check:
     uses: ./.github/workflows/reuse.yaml
+  docker-build:
+    uses: ./.github/workflows/docker-build.yaml
