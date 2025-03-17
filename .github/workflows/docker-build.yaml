@@ -29,8 +29,6 @@ env:
 
 jobs:
   build-image:
-    env:
-      CONTEXT: ${{ inputs.context }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
@@ -49,7 +47,7 @@ jobs:
       - name: Validate build configuration
         uses: docker/build-push-action@v6.15.0
         with:
-          context: $CONTEXT
+          context: ${{ inputs.context }}
           call: check
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -60,7 +58,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6.15.0
         with:
-          context: $CONTEXT
+          context: ${{ inputs.context }}
           # load image into docker to test it in the next step
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
