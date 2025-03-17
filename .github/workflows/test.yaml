@@ -40,3 +40,6 @@ jobs:
       contents: read
       packages: write
     uses: ./.github/workflows/docker-build.yaml
+    with:
+      context: ./.github/
+      test-command: echo success

@@ -5,6 +5,15 @@ name: build
 
 on:
   workflow_call:
+    inputs:
+      context:
+        description: Build context
+        type: string
+        default: .
+      test-command:
+        description: Command to use to test the built image
+        type: string
+        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,6 +29,8 @@ env:
 
 jobs:
   build-image:
+    env:
+      CONTEXT: ${{ inputs.context }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
@@ -38,7 +49,7 @@ jobs:
       - name: Validate build configuration
         uses: docker/build-push-action@v6.15.0
         with:
-          context: .
+          context: $CONTEXT
           call: check
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -49,7 +60,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6.15.0
         with:
-          context: .
+          context: $CONTEXT
           # load image into docker to test it in the next step
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
@@ -60,8 +71,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Test image
+        env:
+          TEST_COMMAND: ${{ inputs.test-command }}
         run: |
-          docker run --rm "$DOCKER_METADATA_OUTPUT_TAGS" alembic --help
+          docker run --rm "$DOCKER_METADATA_OUTPUT_TAGS" "$TEST_COMMAND"
       # - name: Generate artifact attestation
       #   uses: actions/attest-build-provenance@v2.2.3
       #   with:
