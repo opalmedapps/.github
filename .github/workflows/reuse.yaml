@@ -10,10 +10,6 @@ name: REUSE Compliance Check
 on:
   workflow_call:
 
-concurrency:
-  group: "${{ github.ref }}-reuse"
-  cancel-in-progress: true
-
 permissions:
   contents: read
 
