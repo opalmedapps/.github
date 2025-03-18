@@ -62,7 +62,6 @@ jobs:
           echo "$TAGS"
           echo TAG_NAME="$TAGS" | sed 's/\/\./\//g'
           echo TAG_NAME="$TAGS" | sed 's/\/\./\//g' >> "$GITHUB_ENV"
-          echo "$GITHUB_ENV" | grep TAG_NAME
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
