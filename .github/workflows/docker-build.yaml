@@ -59,9 +59,9 @@ jobs:
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          echo "$TAGS"
-          echo TAG_NAME="$TAGS" | sed 's/\/\./\//g'
-          echo TAG_NAME="$TAGS" | sed 's/\/\./\//g' >> "$GITHUB_ENV"
+          TAG_NAME=$(echo "$TAGS" | sed 's/\/\./\//g')
+          echo "Sanitized tag: $TAG_NAME"
+          echo "$TAG_NAME" >> "$GITHUB_ENV"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
