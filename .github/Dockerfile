@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-# to test docker-build workflow in test workflow
+# to test the docker-build workflow in the test workflow
 FROM alpine:latest
 
 RUN apk add --no-cache bash
