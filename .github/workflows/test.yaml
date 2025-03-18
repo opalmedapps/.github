@@ -19,6 +19,9 @@ permissions:
 
 jobs:
   markdownlint-default:
+    permissions:
+      contents: read
+      security-events: write
     uses: ./.github/workflows/markdownlint.yaml
   markdownlint-semantic-linebreak:
     permissions:
@@ -32,3 +35,11 @@ jobs:
       code-scanning: true
   reuse-compliance-check:
     uses: ./.github/workflows/reuse.yaml
+  docker-build:
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/docker-build.yaml
+    with:
+      context: ./.github/
+      test-command: which bash
