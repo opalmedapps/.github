@@ -81,9 +81,7 @@ jobs:
           TEST_COMMAND: ${{ inputs.test-command }}
         run: |
           # shellcheck disable=SC2086
-          echo ${TEST_COMMAND}
-          # shellcheck disable=SC2086
-          docker run --rm "$TAG_NAME" \$TEST_COMMAND
+          docker run --rm "$TAG_NAME" $TEST_COMMAND
       # - name: Generate artifact attestation
       #   uses: actions/attest-build-provenance@v2.2.3
       #   with:
