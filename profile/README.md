@@ -4,15 +4,19 @@
 # SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-# Hi there 👋
+# Welcome to Opal
 
-<!--
+Opal is the open-source patient-in-the-loop data platform.
+Opal is a patient portal designed to empower patients and their caregivers with their medical information.
 
-**Here are some ideas to get you started:**
+## We are now open source 🎉
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+We have recently open sourced our Opal solution!
+Some things might still need to be polished a bit.
+Feel free to let us know if you spot anything, or maybe even contribute 🙂
+
+## Resources
+
+* Opal Website: https://www.opalmedapps.com
+* Documentation: https://docs.opalmedapps.com
+* Community Discussions: https://github.com/orgs/opalmedapps/discussions
