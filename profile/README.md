@@ -7,7 +7,6 @@
 # Welcome to Opal
 
 Opal is the open-source patient-in-the-loop data platform.
-Opal is a patient portal designed to empower patients and their caregivers with their medical information.
 
 ## We are now open source 🎉
 
