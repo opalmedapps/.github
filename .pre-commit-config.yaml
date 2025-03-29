@@ -31,7 +31,7 @@ repos:
       - id: reuse-lint-file
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.30.2
+    rev: v1.30.3
     hooks:
       - id: typos
 
