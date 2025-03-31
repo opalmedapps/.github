@@ -25,9 +25,11 @@ The following repositories are available:
 
 - **opal-app:** The patient-facing web and mobile application (referred to as the _Opal Patient Portal_) used by patients to access their data. [Javascript, AngularJS, Cordova, Onsen].
 
-- **opal-admin:** The staff-facing web application (referred to as _OpalADMIN_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel). Note: this repository is Python/Django-based and contains the code base for all new features and functionality to Opal ADMIN. [Python, Django]
+- **opal-admin:** The staff-facing web application (referred to as _OpalADMIN_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel).
+  Note: this repository is Python/Django-based and contains the code base for all new features and functionality to Opal ADMIN. [Python, Django]
 
-- **opal-admin-legacy:** The staff-facing web application (referred to as _OpalADMIN Legacy_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel). Note: this repository is PHP and PERL-based and contains the legacy version of Opal ADMIN. It is used for maintenance-only development and should not be used to develop any new features or functionality. [PHP and PERL]
+- **opal-admin-legacy:** The staff-facing web application (referred to as _OpalADMIN Legacy_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel). Note: this repository is PHP and PERL-based and contains the legacy version of Opal ADMIN.
+  It is used for maintenance-only development and should not be used to develop any new features or functionality. [PHP and PERL]
 
 - **opal-listener:** The Opal listener software (referred to as the _Opal Listener_) that runs in the background and manages connections between Firebase and the Opal databases. [Node.js]
 
