@@ -34,6 +34,19 @@
       "matchPackageNames": ["/markdownlint-cli2/"],
       "groupName": "markdownlint-cli2",
     },
+    // Reduce noise of some pre-commit hooks
+    {
+      "matchPackageNames": [
+        "/typos$/",
+        "/zizmor-pre-commit$/",
+        "/check-jsonschema$/",
+      ],
+      "groupName": "pre-commit hooks",
+      // Restrict to weekly updates
+      "schedule": [
+        "before 12pm on Monday",
+      ],
+    }
   ],
   // add custom manager for pinning version in GitHub action docker-run specifying a container image
   "customManagers": [
