@@ -28,14 +28,16 @@ The following repositories are available:
 - **opal-admin:** The staff-facing web application (referred to as _OpalADMIN_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel).
   Note: this repository is Python/Django-based and contains the code base for all new features and functionality to Opal ADMIN. [Python, Django]
 
-- **opal-admin-legacy:** The staff-facing web application (referred to as _OpalADMIN Legacy_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel). Note: this repository is PHP and PERL-based and contains the legacy version of Opal ADMIN.
+- **opal-admin-legacy:** The staff-facing web application (referred to as _OpalADMIN Legacy_) used to create and manage the publishing of data and education materials to patients as well as access management for patients and staff (clinicians and administrative personnel).
+  Note: this repository is PHP and PERL-based and contains the legacy version of Opal ADMIN.
   It is used for maintenance-only development and should not be used to develop any new features or functionality. [PHP and PERL]
 
 - **opal-listener:** The Opal listener software (referred to as the _Opal Listener_) that runs in the background and manages connections between Firebase and the Opal databases. [Node.js]
 
 - **opal-registration:** The public-facing webpage (referred to as the _Opal Registration site_) where Opal users can register and create their Opal accounts. [Javascript, AngularJS]
 
-- **opal-db-management:** Opal’s database utility used to manage revisions and data for the Opal legacy database. Note: the current Opal database is managed using the Django framework in. [MySQL]
+- **opal-db-management:** Opal’s database utility used to manage revisions and data for the Opal legacy database.
+  Note: the current Opal database is managed using the Django framework in. [MySQL]
 
 - **deploy-pie:** Copier template to deploy the Opal PIE. The Opal PIE is the Opal Patient Information Exchange, consisting of the Opal Listener, Opal ADMIN, Opal ADMIN Legacy, and all associated databases and scripts.
 
