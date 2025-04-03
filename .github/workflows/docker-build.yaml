@@ -61,7 +61,7 @@ jobs:
         run: |
           TAG_NAMES=$(echo "$TAGS" | sed 's/\/\./\//g')
           echo "Sanitized tag: $TAG_NAMES"
-          echo "tags='$TAG_NAMES'" >> "$GITHUB_OUTPUT"
+          echo "tags=$TAG_NAMES" >> "$GITHUB_OUTPUT"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
