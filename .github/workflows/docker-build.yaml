@@ -61,7 +61,11 @@ jobs:
         run: |
           TAG_NAMES=$(echo "$TAGS" | sed 's/\/\./\//g')
           echo "Sanitized tag: $TAG_NAMES"
-          echo "tags=$TAG_NAMES" >> "$GITHUB_OUTPUT"
+          {
+            echo "TAGS<<"
+            echo "$TAG_NAMES"
+            echo EOF
+          } >> "$GITHUB_ENV"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
@@ -71,7 +75,7 @@ jobs:
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.tags.outputs.tags }}
+          tags: ${{ env.TAGS }}
           labels: ${{ steps.meta.outputs.labels }}
           # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
           # cache-from: type=gha
@@ -79,7 +83,6 @@ jobs:
       - name: Test image
         env:
           TEST_COMMAND: ${{ inputs.test-command }}
-          TAGS: ${{ steps.tags.outputs.tags }}
         run: |
           # shellcheck disable=SC2086
           echo docker run --rm "$TAGS" $TEST_COMMAND
