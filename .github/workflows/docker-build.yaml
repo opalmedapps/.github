@@ -54,7 +54,7 @@ jobs:
       # special case for .github to strip the leading period away since it is an invalid tag name
       # note that this only works if the tags contains a single tag, not several of them
       - name: Sanitize tag name
-        if: ${{ endsWith(github.repository, '.github') }}
+        if: ${{ !endsWith(github.repository, '.github') }}
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
