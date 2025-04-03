@@ -52,7 +52,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       # special case for .github to strip the leading period away since it is an invalid tag name
+      # note that this only works if the tags contains a single tag, not several of them
       - name: Sanitize tag name
+        if: ${{ endsWith(github.repository, '.github') }}
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
@@ -68,7 +70,7 @@ jobs:
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.TAG_NAME }}
+          tags: ${{ env.TAG_NAME || steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
           # cache-from: type=gha
