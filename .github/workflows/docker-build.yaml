@@ -54,13 +54,14 @@ jobs:
       # special case for .github to strip the leading period away since it is an invalid tag name
       # note that this only works if the tags contains a single tag, not several of them
       - name: Sanitize tag name
-        if: ${{ endsWith(github.repository, '.github') }}
+        id: tags
+        # if: ${{ endsWith(github.repository, '.github') }}
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          TAG_NAME=$(echo "$TAGS" | sed 's/\/\./\//g')
-          echo "Sanitized tag: $TAG_NAME"
-          echo "TAG_NAME=$TAG_NAME" >> "$GITHUB_ENV"
+          TAG_NAMES=$(echo "$TAGS" | sed 's/\/\./\//g')
+          echo "Sanitized tag: $TAG_NAMES"
+          echo "tags='$TAG_NAMES'" >> "$GITHUB_OUTPUT"
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6.15.0
@@ -70,7 +71,7 @@ jobs:
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.TAG_NAME || steps.meta.outputs.tags }}
+          tags: ${{ steps.tags.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
           # cache-from: type=gha
@@ -78,11 +79,12 @@ jobs:
       - name: Test image
         env:
           TEST_COMMAND: ${{ inputs.test-command }}
+          TAGS: ${{ steps.tags.outputs.tags }}
         run: |
           # shellcheck disable=SC2086
-          echo docker run --rm "$TAG_NAME" $TEST_COMMAND
+          echo docker run --rm "$TAGS" $TEST_COMMAND
           # shellcheck disable=SC2086
-          docker run --rm "$TAG_NAME" $TEST_COMMAND
+          docker run --rm "$TAGS" $TEST_COMMAND
       # - name: Generate artifact attestation
       #   uses: actions/attest-build-provenance@v2.2.3
       #   with:
