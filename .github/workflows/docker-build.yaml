@@ -62,7 +62,7 @@ jobs:
           TAG_NAMES=$(echo "$TAGS" | sed 's/\/\./\//g')
           echo "Sanitized tag: $TAG_NAMES"
           {
-            echo "TAGS<<"
+            echo "TAGS<<EOF"
             echo "$TAG_NAMES"
             echo EOF
           } >> "$GITHUB_ENV"
