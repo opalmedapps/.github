@@ -16,12 +16,25 @@ We have recently (March 2025) open sourced Opal!
 Some things might still need to be polished a bit.
 Feel free to let us know if you spot anything, or maybe even contribute 🙂
 
-## Repositories
+## Getting started
 
-The following repositories are available:
+### Quick start
 
-> [!NOTE]
-> Repositories that begin with "opal" are components of the Opal platform.
+- Documentation on Opal's architecture: https://docs.opalmedapps.com/development/architecture/
+- Setting up your local development environment: https://docs.opalmedapps.com/development/local-dev-setup/
+- Deploying Opal: https://docs.opalmedapps.com/install/
+
+### Resources
+
+- Opal Website: https://www.opalmedapps.com
+- Opal community page: https://www.opalmedapps.com/community
+- Documentation: https://docs.opalmedapps.com
+- Community discussions: https://github.com/orgs/opalmedapps/discussions
+
+### Overview of our repositories
+
+The following repositories are available.
+Repositories that begin with "opal" are components of the Opal platform.
 
 - **opal-app:** The patient-facing web and mobile application (referred to as the _Opal Patient Portal_) used by users to access their patient data. [JavaScript, AngularJS, Cordova, Onsen UI].
 
@@ -43,10 +56,3 @@ The following repositories are available:
   The Opal PIE is the Opal Patient Information Exchange, consisting of the Opal Listener, OpalADMIN, OpalADMIN Legacy, and all associated databases and scripts.
 
 - **docs:** Opal's documentation site written in Markdown. [MkDocs, mkdocs-material]
-
-## Resources
-
-- Opal Website: https://www.opalmedapps.com
-- Opal community page: https://www.opalmedapps.com/community
-- Documentation: https://docs.opalmedapps.com
-- Community discussions: https://github.com/orgs/opalmedapps/discussions
