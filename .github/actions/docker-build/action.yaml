@@ -80,11 +80,12 @@ runs:
         tags: ${{ env.TAGS }}
         labels: ${{ steps.meta.outputs.labels }}
         # https://docs.docker.com/build/ci/github-actions/cache/#github-cache
-        # cache-from: type=gha
-        # cache-to: type=gha,mode=max
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
     - name: Set outputs
       id: set-outputs
       shell: bash
       run: |
         echo "tags=$TAGS" >> "$GITHUB_OUTPUT"
+        echo "tag=$(echo "$TAGS" | head --lines 1)"
         echo "tag=$(echo "$TAGS" | head --lines 1)" >> "$GITHUB_OUTPUT"
