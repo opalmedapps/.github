@@ -12,6 +12,11 @@ ul-indent:
 # Allow bare URLs since we use magiclink to convert bare URLs automatically to links
 no-bare-urls: false
 
+no-inline-html:
+  allowed_elements:
+    - details
+    - summary
+
 max-one-sentence-per-line:
   # ignore admonition syntax
   # see: https://github.com/aepfli/markdownlint-rule-max-one-sentence-per-line/pull/52/files#r1579994724
