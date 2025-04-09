@@ -87,5 +87,4 @@ runs:
       shell: bash
       run: |
         echo "tags=$TAGS" >> "$GITHUB_OUTPUT"
-        TAG=$(echo "$TAGS" | head --lines 1)
-        echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        echo "tag=$(echo "$TAGS" | head --lines 1)" >> "$GITHUB_OUTPUT"
