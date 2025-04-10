@@ -49,6 +49,10 @@ jobs:
 
   docker-build-action:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # required to push the image to the registry
+      packages: write
     env:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}
