@@ -86,7 +86,6 @@ jobs:
         run: |
           FIRST_TAG=$(echo "$TAGS" | head --lines 1)
           echo "First tag is $FIRST_TAG"
-          python3 -c "import os; tags = os.environ['TAGS']; print(tags); print(tags.split(' ')); print(tags.split('\n'));"
           # shellcheck disable=SC2086
           echo docker run --rm "$FIRST_TAG" $TEST_COMMAND
           # shellcheck disable=SC2086
