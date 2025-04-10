@@ -27,7 +27,9 @@ Feel free to let us know if you spot anything, or maybe even contribute 🙂
 ![Opal High-Level Architecture](./architecture.png)
 
 At a high-level, the ***Opal patient-in-the-loop data*** platform's architecture is quite simple.
-The platform's primary goal is to securely share data across the perimeter of a healthcare institution's protected network between the patient's Opal app and their medical record in the hospital's source systems. This is achieved using a cloud-hosted authentication system and Realtime Database relay. Currently, this service is provided by Google's Firebase service.
+The platform's primary goal is to securely share data across the perimeter of a healthcare institution's protected network between the patient's Opal app and their medical record in the hospital's source systems.
+This is achieved using a cloud-hosted authentication service and *Realtime Database* relay.
+Currently, this service is provided by Google's [Firebase](https://firebase.google.com/) service.
 
 > [!NOTE]
 > In the Details section below, repositories of components of the Opal platform are shown in parenthesis.
