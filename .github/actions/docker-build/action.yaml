@@ -25,10 +25,10 @@ inputs:
 outputs:
   tags:
     description: 'The tag or list of tags of the built image. Multiple tags are separated by \n.'
-    value: ${{ steps.meta.outputs.tags }}
+    value: ${{ steps.set-outputs.outputs.tags }}
   tag:
     description: 'A single tag of the built image'
-    value: ${{ steps.determine-tag.outputs.tag }}
+    value: ${{ steps.set-outputs.outputs.tag }}
 
 runs:
   using: 'composite'
