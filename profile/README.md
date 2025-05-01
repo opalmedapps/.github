@@ -23,6 +23,7 @@ Feel free to let us know if you spot anything, or maybe even contribute 🙂
 - Deploying Opal: https://docs.opalmedapps.com/install/
 
 ## Architecture Overview
+
 ![Opal High-Level Architecture](./architecture.png)
 
 At a high-level, the ***Opal patient-in-the-loop data*** platform's architecture is quite simple.
