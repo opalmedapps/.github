@@ -40,7 +40,7 @@ jobs:
             mkdir -p .github/markdownlint/
             echo "outputFormatters:" > $CONFIG_FILE
             echo "  - - markdownlint-cli2-formatter-template" >> $CONFIG_FILE
-            echo "    - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}"
+            echo "    - template: \"::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}\""
             echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
 
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
