@@ -38,10 +38,12 @@ jobs:
         run: |
             CONFIG_FILE=.github/markdownlint/.markdownlint-cli2.yaml
             mkdir -p .github/markdownlint/
-            echo "outputFormatters:" > $CONFIG_FILE
-            echo "  - - markdownlint-cli2-formatter-template" >> $CONFIG_FILE
-            echo "    - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}" >> $CONFIG_FILE
-            echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
+            cat <<EOF > $CONFIG_FILE
+            outputFormatters:
+              - - markdownlint-cli2-formatter-template
+                - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}
+              - - markdownlint-cli2-formatter-pretty
+            EOF
 
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
             echo "customRules:" >> $CONFIG_FILE
