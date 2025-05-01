@@ -39,12 +39,13 @@ jobs:
             CONFIG_FILE=.github/markdownlint/.markdownlint-cli2.yaml
             mkdir -p .github/markdownlint/
             echo "outputFormatters:" > $CONFIG_FILE
+            echo "  - - markdownlint-cli2-formatter-template" >> $CONFIG_FILE
+            echo "    - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}"
             echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
-            echo "  - - markdownlint-cli2-formatter-sarif" >> $CONFIG_FILE
 
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
-              echo "customRules:" >> $CONFIG_FILE
-              echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
+                echo "customRules:" >> $CONFIG_FILE
+                echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
             fi
       - name: Print config file
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
@@ -57,17 +58,3 @@ jobs:
           options: --volume ${{ github.workspace }}:/workdir --user root
           # use the config file that is stored outside the root for CI specific configuration
           run: markdownlint-cli2 --config .github/markdownlint/.markdownlint-cli2.yaml "**/*.md"
-      # Needs to be a public repo in order for uploading SARIF files to work
-      # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
-      # - uses: github/codeql-action/upload-sarif@v3
-      #   if: ${{ inputs.code-scanning }}
-      #   with:
-      #     # Path to SARIF file relative to the root of the repository
-      #     sarif_file: markdownlint-cli2-sarif.sarif
-      #     # Optional category for the results
-      #     # Used to differentiate multiple results for one commit
-      #     category: markdownlint
-      # fail if there are markdownlint violations
-      # - name: Check markdownlint results
-      #   run: |
-      #     grep -q '"results": \[\]' markdownlint-cli2-sarif.sarif
