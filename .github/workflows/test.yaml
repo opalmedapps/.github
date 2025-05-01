@@ -21,15 +21,11 @@ jobs:
   markdownlint-default:
     permissions:
       contents: read
-      security-events: write
     uses: ./.github/workflows/markdownlint.yaml
 
   markdownlint-semantic-linebreak:
     permissions:
       contents: read
-      # required for upload-sarif action
-      # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github#example-workflow-for-sarif-files-generated-outside-of-a-repository
-      security-events: write
     uses: ./.github/workflows/markdownlint.yaml
     with:
       semantic-linebreak: true
