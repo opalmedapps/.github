@@ -40,15 +40,13 @@ jobs:
             mkdir -p .github/markdownlint/
             echo "outputFormatters:" > $CONFIG_FILE
             echo "  - - markdownlint-cli2-formatter-template" >> $CONFIG_FILE
-            echo "    - template: \"::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}\""
+            echo "    - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}" >> $CONFIG_FILE
             echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
-
 
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
             echo "customRules:" >> $CONFIG_FILE
             echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
             fi
-            cat $CONFIG_FILE
       - name: Print config file
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
       - name: Run markdownlint with rules as container
