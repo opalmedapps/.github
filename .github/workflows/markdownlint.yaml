@@ -38,19 +38,21 @@ jobs:
         run: |
             CONFIG_FILE=.github/markdownlint/.markdownlint-cli2.yaml
             mkdir -p .github/markdownlint/
-            echo "outputFormatters:" > $CONFIG_FILE
-            echo "  - - markdownlint-cli2-formatter-template" >> $CONFIG_FILE
-            echo "    - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}"
-            echo "  - - markdownlint-cli2-formatter-pretty" >> $CONFIG_FILE
+            cat <<EOF > $CONFIG_FILE
+            outputFormatters:
+              - - markdownlint-cli2-formatter-template
+                - template: ::error file=\${fileName},line=\${lineNumber},\${columnNumber:col=\${columnNumber},}title=\${ruleName}::\${ruleDescription}
+              - - markdownlint-cli2-formatter-pretty
+            EOF
 
             if [[ -n "$SEMANTIC_LINEBREAK" && $SEMANTIC_LINEBREAK == true ]]; then
-                echo "customRules:" >> $CONFIG_FILE
-                echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
+            echo "customRules:" >> $CONFIG_FILE
+            echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
             fi
       - name: Print config file
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
       - name: Run markdownlint with rules as container
-        uses: YannickTeKulve/docker-run-action@0.0.6
+        uses: YannickTeKulve/docker-run-action@37eb44806428df732c5cc168b96f2b6be8153632
         continue-on-error: false
         with:
           image: davidanson/markdownlint-cli2-rules:v0.17.2
