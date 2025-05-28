@@ -76,6 +76,7 @@ The OpalAdmin (`opal-admin` and `opal-admin-legacy`) application is used by the 
 #### Opal Room Management System (ORMS)
 
 *ORMS* provides live clinic management dashboards consisting of a virtual waiting room and clinician dashboard.
+Patients can check-in via a kiosk, and get called to their treating room via TV screens.
 
 </details>
 
@@ -101,6 +102,7 @@ Repositories that begin with "opal" are components of the Opal platform.
   Note: The current Opal database is managed using the Django framework in `opal-admin`. [Alembic, Python, MySQL]
 
 - **opal-rms:** The virtual waiting room to call patients to their appointment, and the staff-facing clinician web dashboard to manage patients with appointments.
+  Also provides web interfaces for the kiosk and TV screens.
   Note: this repository is PHP-based and contains the legacy version of ORMS.
   It is used for maintenance-only development and should not be used to develop any new features or functionality. [PHP, JavaScript, AngularJS]
 
