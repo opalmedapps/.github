@@ -45,8 +45,10 @@ runs:
         cache-binary: false
     - name: Validate build configuration
       uses: docker/build-push-action@v6.18.0
+      env:
+        CONTEXT: ${{ inputs.context }}
       with:
-        context: ${{ inputs.context }}
+        context: ${CONTEXT}
         call: check
     - name: Extract metadata (tags, labels) for Docker
       id: meta
@@ -71,8 +73,10 @@ runs:
     - name: Build and push Docker image
       id: push
       uses: docker/build-push-action@v6.18.0
+      env:
+        CONTEXT: ${{ inputs.context }}
       with:
-        context: ${{ inputs.context }}
+        context: ${CONTEXT}
         # load image into docker to test it in the next step
         load: true
         # only push to the registry when it is not a PR (i.e., main branch)
