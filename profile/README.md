@@ -18,6 +18,8 @@ Feel free to let us know if you spot anything, or maybe even contribute 🙂
 
 ## Quick links
 
+- Opal website: https://www.opalmedapps.com
+- Short brochure that introduces the Opal platform: https://www.opalmedapps.com/en/\_files/ugd/959010_5c87a4238c0e4a1b95a4d63eda7f559f.pdf
 - Documentation on Opal's architecture: https://docs.opalmedapps.com/development/architecture/
 - Setting up your local development environment: https://docs.opalmedapps.com/development/local-dev-setup/
 - Deploying Opal: https://docs.opalmedapps.com/install/
