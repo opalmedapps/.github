@@ -43,7 +43,7 @@ jobs:
         with:
           cache-binary: false
       - name: Validate build configuration
-        uses: docker/build-push-action@v6.17.0
+        uses: docker/build-push-action@v6.18.0
         with:
           context: ${{ env.CONTEXT }}
           call: check
@@ -69,7 +69,7 @@ jobs:
           } >> "$GITHUB_ENV"
       - name: Build and push Docker image
         id: push
-        uses: docker/build-push-action@v6.17.0
+        uses: docker/build-push-action@v6.18.0
         with:
           context: ${{ env.CONTEXT }}
           # load image into docker to test it in the next step
