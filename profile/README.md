@@ -76,7 +76,7 @@ The OpalAdmin (`opal-admin` and `opal-admin-legacy`) application is used by the 
 #### Opal Room Management System (ORMS)
 
 *ORMS* provides live clinic management dashboards consisting of a virtual waiting room and clinician dashboard.
-Patients can check-in via a kiosk, and get called to their treating room via TV screens.
+Patients can check-in via a kiosk, via the Opal App or via SMS and get called to their treating room via TV screens, by the Opal App, and/or by SMS message.
 
 </details>
 
@@ -101,10 +101,11 @@ Repositories that begin with "opal" are components of the Opal platform.
 - **opal-db-management:** Opal's database utility used to manage revisions and data for the Opal legacy databases.
   Note: The current Opal database is managed using the Django framework in `opal-admin`. [Alembic, Python, MySQL]
 
-- **opal-rms:** The virtual waiting room to call patients to their appointment, and the staff-facing clinician web dashboard to manage patients with appointments.
-  Also provides web interfaces for the kiosk and TV screens.
-  Note: this repository is PHP-based and contains the legacy version of ORMS.
-  It is used for maintenance-only development and should not be used to develop any new features or functionality. [PHP, JavaScript, AngularJS]
+- **opal-rms:** The live clinician dashboards that may be used to manage patients according to set conditions.
+  Includes the Opal Virtual Waiting Room used by clinicians for waiting room management as well as the Clinician Dashboard that can be used for remote monitoring of patients who submit data (from wearables or questionnaires) via Opal.
+  Also provides web interfaces for kiosks and TV screens.
+  Note: This repository is PHP-based and contains what is intended to become the legacy version of ORMS.
+  It should ideally not be used to develop any new features or functionality and will ultimately be migrated to `opal-admin`. [PHP, JavaScript, AngularJS]
 
 - **deploy-pie:** Copier template to deploy the Opal PIE.
   The Opal PIE is the Opal Patient Information Exchange, consisting of the Opal Listener, OpalAdmin, OpalAdmin Legacy, and all associated databases and scripts.
