@@ -22,6 +22,7 @@ permissions:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  CONTEXT: ${{ inputs.context }}
 
 jobs:
   build-image:
@@ -44,7 +45,7 @@ jobs:
       - name: Validate build configuration
         uses: docker/build-push-action@v6.18.0
         with:
-          context: ${{ inputs.context }}
+          context: ${{ env.CONTEXT }}
           call: check
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -70,7 +71,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6.18.0
         with:
-          context: ${{ inputs.context }}
+          context: ${{ env.CONTEXT }}
           # load image into docker to test it in the next step
           load: true
           # only push to the registry when it is not a PR (i.e., main branch)

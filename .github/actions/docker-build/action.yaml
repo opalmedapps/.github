@@ -44,9 +44,11 @@ runs:
       with:
         cache-binary: false
     - name: Validate build configuration
-      uses: docker/build-push-action@v6.18.0
+      uses: docker/build-push-action@v6.17.0
+      env:
+        CONTEXT: ${{ inputs.context }}
       with:
-        context: ${{ inputs.context }}
+        context: ${{ env.CONTEXT }}
         call: check
     - name: Extract metadata (tags, labels) for Docker
       id: meta
@@ -70,7 +72,7 @@ runs:
         } >> "$GITHUB_ENV"
     - name: Build and push Docker image
       id: push
-      uses: docker/build-push-action@v6.18.0
+      uses: docker/build-push-action@v6.17.0
       with:
         context: ${{ inputs.context }}
         # load image into docker to test it in the next step
