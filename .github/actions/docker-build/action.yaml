@@ -31,8 +31,6 @@ outputs:
     value: ${{ steps.set-outputs.outputs.tag }}
 
 runs:
-  env:
-    CONTEXT: ${{ inputs.context }}
   using: 'composite'
   steps:
     - name: Login to GitHub Container Registry
@@ -47,6 +45,8 @@ runs:
         cache-binary: false
     - name: Validate build configuration
       uses: docker/build-push-action@v6.17.0
+      env:
+        CONTEXT: ${{ inputs.context }}
       with:
         context: ${{ env.CONTEXT }}
         call: check
