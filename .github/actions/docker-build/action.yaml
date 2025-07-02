@@ -48,7 +48,7 @@ runs:
       env:
         CONTEXT: ${{ inputs.context }}
       with:
-        context: $CONTEXT
+        context: ${{ env.CONTEXT }}
         call: check
     - name: Extract metadata (tags, labels) for Docker
       id: meta
@@ -76,7 +76,7 @@ runs:
       env:
         CONTEXT: ${{ inputs.context }}
       with:
-        context: $CONTEXT
+        context: ${{ env.CONTEXT }}
         # load image into docker to test it in the next step
         load: true
         # only push to the registry when it is not a PR (i.e., main branch)
