@@ -49,7 +49,7 @@ jobs:
           call: check
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5.7.0
+        uses: docker/metadata-action@v5.8.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       # special case for .github to strip the leading period away since it is an invalid tag name
