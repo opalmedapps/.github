@@ -25,4 +25,4 @@ jobs:
           lfs: true
 
       - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v5.0.0
+        uses: fsfe/reuse-action@v6.0.0
