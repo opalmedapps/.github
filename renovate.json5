@@ -35,6 +35,11 @@
       "matchPackageNames": ["/markdownlint-cli2/"],
       "groupName": "markdownlint-cli2",
     },
+    // Combine reuse-tool and reuse-action updates
+    {
+      "matchPackageNames": ["/reuse-tool/", "/reuse-action/"],
+      "groupName": "reuse",
+    },
     // Reduce noise of some pre-commit hooks
     {
       "matchPackageNames": [
