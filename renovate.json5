@@ -41,6 +41,7 @@
       "matchPackageNames": ["/reuse-tool/", "/reuse-action/"],
       "groupName": "reuse",
     },
+  ],
   // add custom manager for pinning version in GitHub action docker-run specifying a container image
   "customManagers": [
     {
