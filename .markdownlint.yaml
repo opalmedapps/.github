@@ -31,3 +31,6 @@ max-one-sentence-per-line:
     - "??"
     - "vs"
     - "dr"
+
+# disable unneeded rule to allow test/markdownlint jobs to pass
+material-meta-tags: false
