@@ -17,6 +17,9 @@
     // see: https://docs.renovatebot.com/modules/manager/pre-commit/
     // https://docs.renovatebot.com/presets-default/#enableprecommit
     ":enablePreCommit",
+    // https://docs.renovatebot.com/presets-default/#configmigration
+    ":configMigration",
+    "helpers:pinGitHubActionDigestsToSemver",
     "github>mschoettle/renovate-presets//presets/packages/typos.json5",
   ],
   // https://docs.renovatebot.com/configuration-options/#assignees
