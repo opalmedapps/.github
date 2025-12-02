@@ -16,9 +16,6 @@ on:
       mkdocs-material-linter:
         type: boolean
         default: false
-      code-scanning:
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -60,7 +57,7 @@ jobs:
             echo '  - "markdownlint-rule-max-one-sentence-per-line"' >> $CONFIG_FILE
             fi
 
-            if [[ $USE_MKDOCS_MATERIAL_LINTER ]]; then
+            if [[ $USE_MKDOCS_MATERIAL_LINTER == true ]]; then
             echo '  - "mkdocs-material-linter"' >> $CONFIG_FILE
             fi
 
