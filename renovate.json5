@@ -8,8 +8,6 @@
     "config:recommended",
     // https://docs.renovatebot.com/presets-default/#separatemultiplemajorreleases
     ":separateMultipleMajorReleases",
-    // https://docs.renovatebot.com/presets-default/#separatepatchreleases
-    ":separatePatchReleases",
     // set timezone to local one to ensure schedules are run
     // https://docs.renovatebot.com/configuration-options/#timezone
     ":timezone(America/Toronto)",
@@ -43,20 +41,6 @@
       "matchPackageNames": ["/reuse-tool/", "/reuse-action/"],
       "groupName": "reuse",
     },
-    // Reduce noise of pre-commit hooks
-    {
-      "matchManagers": [
-        "pre-commit",
-      ],
-      "groupName": "pre-commit hooks",
-      "separateMajorMinor": false,
-      "separateMinorPatch": false,
-      // Restrict to weekly updates
-      "schedule": [
-        "before 12pm on Monday",
-      ],
-    },
-  ],
   // add custom manager for pinning version in GitHub action docker-run specifying a container image
   "customManagers": [
     {
