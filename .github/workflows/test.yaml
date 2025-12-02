@@ -30,6 +30,28 @@ jobs:
     uses: ./.github/workflows/markdownlint.yaml
     with:
       semantic-linebreak: true
+
+  markdownlint-mkdocs-material-linter:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/markdownlint.yaml
+    with:
+      mkdocs-material-linter: true
+
+  markdownlint-code-scanning:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/markdownlint.yaml
+    with:
+      code-scanning: true
+
+  markdownlint-all-options:
+    permissions:
+      contents: read
+    uses: ./.github/workflows/markdownlint.yaml
+    with:
+      semantic-linebreak: true
+      mkdocs-material-linter: true
       code-scanning: true
 
   reuse-compliance-check:
