@@ -64,11 +64,10 @@ jobs:
       - name: Print config file
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
       - name: Run markdownlint with rules as container
-        uses: YannickTeKulve/docker-run-action@37eb44806428df732c5cc168b96f2b6be8153632
+        env:
+          MARKDOWNLINT_VERSION: v0.20.0
         continue-on-error: false
-        with:
-          image: davidanson/markdownlint-cli2-rules:v0.20.0
-          # node user does not have permissions to workspace due to user id mismatch
-          options: --volume ${{ github.workspace }}:/workdir --user root
-          # use the config file that is stored outside the root for CI specific configuration
-          run: markdownlint-cli2 --config .github/markdownlint/.markdownlint-cli2.yaml "**/*.md"
+        run: |
+            # node user does not have permissions to workspace due to user id mismatch
+            # use the config file that is stored outside the root for CI specific configuration
+            docker run --rm --user root --volume ${{ github.workspace }}:/workdir davidanson/markdownlint-cli2-rules:${{ env.MARKDOWNLINT_VERSION }} markdownlint-cli2 --config .github/markdownlint/.markdownlint-cli2.yaml "**/*.md"
