@@ -65,6 +65,7 @@ jobs:
         run: cat .github/markdownlint/.markdownlint-cli2.yaml
       - name: Run markdownlint with rules as container
         env:
+          # renovate: datasource=docker depName=davidanson/markdownlint-cli2-rules versioning=docker
           MARKDOWNLINT_VERSION: v0.20.0
         continue-on-error: false
         run: |
