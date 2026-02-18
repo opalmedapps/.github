@@ -15,17 +15,12 @@ concurrency:
   group: "${{ github.ref }}-ci"
   cancel-in-progress: true
 
+permissions:
+  contents: read
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
-        env:
-          # run in test when testing the markdownlint workflow
-          SKIP: markdownlint-cli2
+    uses: opalmedapps/actions/.github/workflows/prek.yaml@main
+    with:
+      # run in test when testing the markdownlint workflow
+      skip: markdownlint-cli2
