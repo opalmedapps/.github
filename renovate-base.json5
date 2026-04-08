@@ -5,9 +5,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    // Extend a best-practices base
-    // See: https://github.com/mschoettle/renovate-presets#base
-    "github>mschoettle/renovate-presets//presets/base.json5",
+    // Extend a best-practices base preset
+    // See: https://github.com/mschoettle/renovate-presets#best-practices
+    "github>mschoettle/renovate-presets//presets/best-practices.json5",
   ],
   // https://docs.renovatebot.com/configuration-options/#labels
   "labels": ["dependencies"],
