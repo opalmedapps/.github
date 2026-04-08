@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   lint:
-    uses: opalmedapps/actions/.github/workflows/prek.yaml@main
+    uses: opalmedapps/actions/.github/workflows/prek.yaml@24350eccf4a071b5ebd14a6dd2b5642a5fb1716d # main
     with:
       # run in test when testing the markdownlint workflow
       skip: markdownlint-cli2
