@@ -7,7 +7,7 @@
   "extends": [
     // Extend a best-practices base preset
     // See: https://github.com/mschoettle/renovate-presets#best-practices
-    "github>mschoettle/renovate-presets//presets/best-practices.json5",
+    "github>mschoettle/renovate-presets//presets/best-practices.json5@df644a68f173f664780b5e83878ef449247e3f90",
     // set timezone to local one to ensure schedules are run
     // https://docs.renovatebot.com/configuration-options/#timezone
     ":timezone(America/Toronto)",
