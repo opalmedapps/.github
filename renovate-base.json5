@@ -13,7 +13,13 @@
     ":timezone(America/Toronto)",
     // https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions
     "customManagers:githubActionsVersions",
+    // Require dashboard approvals to avoid spamming projects
+    // https://docs.renovatebot.com/presets-default/#dependencydashboardapproval
+    ":dependencyDashboardApproval",
   ],
+  // Extra rules for node images. See: https://github.com/renovatebot/renovate/discussions/29501
+  // Ensure that node docker versioning doesn't interfere with the custom managers.
+  "ignorePresets": ["workarounds:nodeDockerVersioning"],
   // https://docs.renovatebot.com/configuration-options/#labels
   "labels": ["dependencies"],
   "packageRules": [
