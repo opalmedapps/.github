@@ -8,6 +8,11 @@
     // Extend a best-practices base preset
     // See: https://github.com/mschoettle/renovate-presets#best-practices
     "github>mschoettle/renovate-presets//presets/best-practices.json5",
+    // set timezone to local one to ensure schedules are run
+    // https://docs.renovatebot.com/configuration-options/#timezone
+    ":timezone(America/Toronto)",
+    // https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions
+    "customManagers:githubActionsVersions",
   ],
   // https://docs.renovatebot.com/configuration-options/#labels
   "labels": ["dependencies"],
@@ -26,6 +31,17 @@
     {
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["actions/upload-artifact", "actions/download-artifact"],
+    },
+    // Disable action pinning for our own actions and workflows
+    {
+      "matchDepTypes": [
+        "action"
+      ],
+      "pinDigests": false,
+      "matchPackageNames": [
+        "opalmedapps/actions",
+        "opalmedapps/.github",
+      ],
     },
   ],
 }
