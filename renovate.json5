@@ -28,4 +28,10 @@
       "groupName": "reuse",
     },
   ],
+  "renovate-config-presets": {
+    "managerFilePatterns": [
+      "renovate.json5",
+      "renovate-base.json5",
+    ],
+  },
 }
