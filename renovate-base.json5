@@ -1,0 +1,31 @@
+// SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
+//
+// SPDX-License-Identifier: MIT
+
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    // Extend a best-practices base
+    // See: https://github.com/mschoettle/renovate-presets#base
+    "github>mschoettle/renovate-presets//presets/base.json5",
+  ],
+  // https://docs.renovatebot.com/configuration-options/#labels
+  "labels": ["dependencies"],
+  "packageRules": [
+    // Combine reuse-tool and reuse-action updates
+    {
+      "matchPackageNames": ["/reuse-tool/", "/reuse-action/"],
+      "groupName": "reuse",
+    },
+    // Combine Docker actions
+    {
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["/docker\\//"],
+    },
+    // Combine download and upload artifact actions
+    {
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["actions/upload-artifact", "actions/download-artifact"],
+    },
+  ],
+}
