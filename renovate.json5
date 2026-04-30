@@ -1,37 +1,31 @@
-// SPDX-FileCopyrightText: Copyright (C) 2025 Opal Health Informatics Group <https://www.opalmedapps.com>
-//
-// SPDX-License-Identifier: MIT
-
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>opalmedapps/.github//base.renovate.json5",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'github>opalmedapps/.github//base.renovate.json5',
   ],
-  // https://docs.renovatebot.com/configuration-options/#assignees
-  "assignees": [],
-  // https://docs.renovatebot.com/configuration-options/#packagerules
-  "packageRules": [
-    // Exclude markdownlint-cli2 and reuse-tool pre-commit hooks from the pre-commit hooks group
-    // to avoid adding config options from the pre-commit hooks preset
+  assignees: [],
+  packageRules: [
     {
-      "matchManagers": [
-        "pre-commit",
+      matchManagers: [
+        'pre-commit',
       ],
-      "matchPackageNames": [
-        "!/markdownlint-cli2/",
-        "!/reuse-tool/",
+      matchPackageNames: [
+        '!/markdownlint-cli2/',
+        '!/reuse-tool/',
       ],
     },
-    // Combine reuse-tool and reuse-action updates
     {
-      "matchPackageNames": ["/reuse-tool/", "/reuse-action/"],
-      "groupName": "reuse",
+      matchPackageNames: [
+        '/reuse-tool/',
+        '/reuse-action/',
+      ],
+      groupName: 'reuse',
     },
   ],
-  "renovate-config-presets": {
-    "managerFilePatterns": [
-      "renovate.json5",
-      "base.renovate.json5",
+  'renovate-config': {
+    managerFilePatterns: [
+      'renovate.json5',
+      'base.renovate.json5',
     ],
   },
 }
