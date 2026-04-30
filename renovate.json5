@@ -28,7 +28,7 @@
       "groupName": "reuse",
     },
   ],
-  "renovate-config-presets": {
+  "renovate-config": {
     "managerFilePatterns": [
       "renovate.json5",
       "base.renovate.json5",
